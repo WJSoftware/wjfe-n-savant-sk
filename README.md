@@ -1,58 +1,48 @@
-# Svelte library
+# @wjfe/n-savant-sk
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+> Hash router for Sveltekit projects
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+This is an extension package of the [@wjfe/n-savant](https://github.com/WJSoftware/wjfe-n-savant) SPA router, and enables the use of the router in hash mode in Sveltekit projects.
 
-## Creating a project
+## Why Would I Need This?
 
-If you're seeing this, you've probably already done this step. Congrats!
+Sveltekit has an excellent file-based router.  You should always stick to the built-in router for routing your application.  However, as with every other router in existence, you can only do path routing or hash routing, but not both.
 
-```sh
-# create a new project in the current directory
-npx sv create
+The `@wjfe/n-savant` router was born to break this barrier:  This SPA router can do path and hash routing simultaneously.  However, this is a router for SPA's and PWA's that render on the client.  It was not designed for SSR scenarios.  After all, Sveltekit has routing capabilities included.
 
-# create a new project in my-app
-npx sv create my-app
-```
+But what if you wanted to do hash routing on top of Sveltekit's path routing?  You can, with this router extension.
 
-## Developing
+### Useful Scenarios
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. You could show a complex dialog box that is driven by hash routing.
+2. You could mount a micro-frontend that routes with a path in the hash.
 
-```sh
-npm run dev
+## Quickstart
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+1. Install the package
+    ```bash
+    npm install @wjfe/n-savant-sk # This also installs the @wjfe/n-savant main package
+    ```
+2. Initialize the library.  Ideally, in the root `+layout.svelte` component:
+    ```svelte
+    <script lang="ts">
+        import { init } from "@wjfe/n-savant-sk";
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+        init(/* options */);
+    </script>
+    ```
+3. Add routers, routes and links for hash navigation as you please.
 
-## Building
+> **⚡ Attention!**
+> 
+> Early testing has revealed what may or may not be a bug in Svelte or Sveltekit.  The situation:  Just importing `init` from `@wjfe/n-savant-sk` triggers error `rune_outside_svelte` on the `trace.svelte.js` file in the `@wjfe/n-savant` package.  To overcome this, just add `{ ssr: { noExternal: ["@wjfe/n-savant", "@wjfe/n-savant-sk"] }}` to Vite's configuration.
+>
+> Hopefully, I'll be able to figure more about this problem in the coming weeks.
 
-To build your library:
+## Limitations
 
-```sh
-npm pack
-```
+1. Path routing is disallowed.
 
-To create a production version of your showcase app:
+---
 
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+Generally speaking, you need to understand the `@wjfe/n-savant` router, so have handy its [online documentation](https://wjfe-n-savant.hashnode.space/).
