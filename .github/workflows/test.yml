@@ -10,5 +10,5 @@ jobs:
     with:
       node-version: 24
       build-script: build
-      test-script: test
+      test-script: "test:ci"
       build: false

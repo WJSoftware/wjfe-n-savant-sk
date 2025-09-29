@@ -20,7 +20,7 @@ jobs:
     with:
       node-version: 24
       build-script: build
-      test-script: test
+      test-script: "test:ci"
       npm-tag: ${{ inputs.npm-tag || 'latest' }}
       dry-run: ${{ inputs.dry-run || false }}
     secrets: inherit
