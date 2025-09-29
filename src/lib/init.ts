@@ -12,6 +12,7 @@ export function init(options?: SkInitOptions) {
     cleanupFn = initCore(new SkLocation(), {
         ...options,
         implicitMode: 'hash',
+        disallowPathRouting: true,
     });
     return cleanupFn;
 }
