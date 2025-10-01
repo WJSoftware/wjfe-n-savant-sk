@@ -111,7 +111,7 @@ describe("SkHistoryApi", () => {
         test("Should call goto with the correct arguments for pushState.", () => {
             const state = { foo: "bar" };
             historyApi.pushState(state, '', 'http://localhost/new-page');
-            expect(goto).toHaveBeenCalledWith('http://localhost/new-page', { state });
+            expect(goto).toHaveBeenCalledWith('http://localhost/new-page', { state, noScroll: true });
         });
 
         test.each([
@@ -125,7 +125,7 @@ describe("SkHistoryApi", () => {
         test("Should call goto with the correct arguments for replaceState.", () => {
             const state = { foo: "bar" };
             historyApi.replaceState(state, '', 'http://localhost/new-page');
-            expect(goto).toHaveBeenCalledWith('http://localhost/new-page', { state, replaceState: true });
+            expect(goto).toHaveBeenCalledWith('http://localhost/new-page', { state, replaceState: true, noScroll: true });
         });
 
         test.each([

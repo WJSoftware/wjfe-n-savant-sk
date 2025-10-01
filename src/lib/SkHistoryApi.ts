@@ -59,11 +59,11 @@ export class SkHistoryApi implements HistoryApi {
 
     pushState(data: any, unused: string, url?: string | URL | null): void {
         assertValidUrl(url);
-        goto(url, { state: data });
+        goto(url, { state: data, noScroll: true });
     }
 
     replaceState(data: any, unused: string, url?: string | URL | null): void {
         assertValidUrl(url);
-        goto(url, { state: data, replaceState: true });
+        goto(url, { state: data, replaceState: true, noScroll: true });
     }
 }
