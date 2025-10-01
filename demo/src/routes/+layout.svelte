@@ -1,34 +1,32 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
-	import { init } from '@wjfe/n-savant-sk';
-	import { Link, location, Router } from '@wjfe/n-savant';
-	import { onDestroy } from 'svelte';
+	import './main.scss';
+	import { init, type SkInitOptions } from '@wjfe/n-savant-sk';
+	import { location } from '@wjfe/n-savant';
+	import NavBar from '$lib/NavBar.svelte';
+	import theme from '$lib/state/theme.svelte.js';
+	import { page } from '$app/state';
 
 	let { children } = $props();
-	console.debug('Layout component initialized');
-	const cleanup = init();
-	onDestroy(() => {
-		console.debug('Layout component destroyed');
-		cleanup();
-	});
-	console.debug('Location:', location);
-
-	function navigate(to: string) {
-		location.navigate(to);
+	let hashMode: SkInitOptions['hashMode'] = 'single';
+	if (page.url.searchParams.has('multi')) {
+		hashMode = 'multi' as const;
 	}
+	init({ hashMode });
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Router>
-	<Link href="/">Home</Link>
-	<Link href="/about">About</Link>
-	<a href="#/">Home</a>
-	<a href="#/about">About</a>
-	<hr />
-	<button type="button" onclick={() => navigate('/')}>Home</button>
-	<button type="button" onclick={() => navigate('/about')}>About</button>
-	{@render children?.()}
-</Router>
+<div class={{ 'theme-dark': theme.current === 'dark' }}>
+	<div class="container is-max-widescreen">
+		<NavBar />
+		<main>
+			{@render children?.()}
+		</main>
+	</div>
+</div>
+
+<style>
+</style>
