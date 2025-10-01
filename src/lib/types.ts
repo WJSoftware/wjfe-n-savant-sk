@@ -1,6 +1,7 @@
 import "@wjfe/n-savant";
 import { goto } from "$app/navigation";
 import type { Hash, PreserveQuery, InitOptions, State, GoToOptions } from "@wjfe/n-savant";
+import type { calculateHref } from "@wjfe/n-savant/core";
 
 /**
  * Options available to the `Location.skGoto` method.
@@ -51,3 +52,7 @@ declare module "@wjfe/n-savant" {
  * Options available to the `init` function.
  */
 export type SkInitOptions = Omit<InitOptions, 'implicitMode'>;
+
+export type SkHash = Exclude<Hash, false>;
+
+export type CalculateSkHrefOptions = Omit<Parameters<typeof calculateHref>[0], 'hash'>;
