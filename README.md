@@ -35,7 +35,7 @@ But what if you wanted to do hash routing on top of Sveltekit's path routing?  Y
 
 > **⚡ Attention!**
 > 
-> Early testing has revealed what may or may not be a bug in Svelte or Sveltekit.  The situation:  Just importing `init` from `@wjfe/n-savant-sk` triggers error `rune_outside_svelte` on the `trace.svelte.js` file in the `@wjfe/n-savant` package.  To overcome this, just add `{ ssr: { noExternal: ["@wjfe/n-savant", "@wjfe/n-savant-sk"] }}` to Vite's configuration.
+> Early testing has revealed what may or may not be a bug in Svelte or Sveltekit.  The situation:  Just importing `init` from `@wjfe/n-savant-sk` triggers error `rune_outside_svelte` on the `trace.svelte.js` file in the `@wjfe/n-savant` package.  To overcome this, just add `{ ssr: { noExternal: ["@wjfe/n-savant"] }}` to Vite's configuration.
 >
 > Hopefully, I'll be able to figure more about this problem in the coming weeks.
 
