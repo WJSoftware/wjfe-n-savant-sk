@@ -44,7 +44,8 @@
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "^2.12.0",
-		"@wjfe/n-savant": "^0.10.2"
+		"@wjfe/n-savant": "^0.12.0",
+		"svelte": "^5.31.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",
