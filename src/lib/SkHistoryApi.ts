@@ -15,7 +15,7 @@ export class SkHistoryApi implements HistoryApi {
         if (browser && !isConformantState(page.state)) {
             // I tried with replaceState() here, throws with error "cannot use before router initializes".
             // So, using goto() with replaceState: true.  This triggers an update on page.url, though.
-            goto('', { replaceState: true, state: { path: page.state, hash: {} } });
+            goto(page.url.toString(), { replaceState: true, state: { path: page.state, hash: {} } });
         }
     }
 

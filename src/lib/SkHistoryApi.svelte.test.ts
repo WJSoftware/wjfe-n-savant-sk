@@ -47,14 +47,14 @@ const hoistedVars = vi.hoisted(() => ({
 
 vi.mock(import("$app/state"), async (importOriginal) => {
     return {
-        ...importOriginal,
+        ...await importOriginal(),
         page: {
             get url() {
-                return hoistedVars.urlMock();
+                return hoistedVars.urlMock() ?? new URL("http://localhost/");
             },
             get state() {
                 return hoistedVars.stateMock();
-            }
+            },
         } as Page
     }
 });
