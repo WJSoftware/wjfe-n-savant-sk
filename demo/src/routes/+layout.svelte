@@ -1,8 +1,8 @@
 <script lang="ts">
+	import '@fortawesome/fontawesome-free/css/all.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import './main.scss';
 	import { init, type SkInitOptions } from '@wjfe/n-savant-sk';
-	import { location } from '@wjfe/n-savant';
 	import NavBar from '$lib/NavBar.svelte';
 	import theme from '$lib/state/theme.svelte.js';
 	import { page } from '$app/state';
