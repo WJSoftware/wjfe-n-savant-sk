@@ -19,8 +19,11 @@
 
 <Section>
     <header class="is-flex is-justify-content-space-between">
-        <span><strong>Path (Sveltekit):</strong> <code>{location.url.pathname}</code></span>
-        <span><strong>Hash path:</strong> <code>{hashPath}</code></span>
+        <span>&nbsp;</span>
+        <span>
+            <strong>Hash path:</strong>
+            <code>{typeof hash === 'string' ? `${hash}=` : ''}{hashPath || '/'}</code>
+        </span>
     </header>
     <div class="box">
         <Router {hash}>
