@@ -30,10 +30,10 @@
 	"type": "module",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wjfe/n-savant-sk.git"
+		"url": "git+https://github.com/WJSoftware/wjfe-n-savant-sk.git"
 	},
 	"bugs": {
-		"url": "https://github.com/wjfe/n-savant-sk/issues"
+		"url": "https://github.com/WJSoftware/wjfe-n-savant-sk/issues"
 	},
 	"license": "MIT",
 	"exports": {
